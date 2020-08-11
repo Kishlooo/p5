@@ -123,4 +123,10 @@ STATIC_ROOT=STATIC_DIR#parent static directory
 STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     STATIC_DIR_MYAPP,
-] 
+]
+
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_PORT=465
+EMAIL_HOST_USER="kishanbamrotiya25@gmail.com"
+EMAIL_HOST_PASSWORD=""
+EMAIL_USE_SSL=True
