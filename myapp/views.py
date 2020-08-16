@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.core.mail import send_mail
 # Create your views here.
@@ -45,7 +45,7 @@ def register(request):
             gender="Male"
         send_mail("Thanks For Registration","hello Mr./Ms.{} {}\n Thanks for Registering".format(first_name,last_name),
         "kishanbamrotiya25@gmail.com",[email,],fail_silently=False)
-        return HttpResponse("{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>".format(first_name,last_name,email,password,phno,gender,date,month,year))
+        return redirect("home")
     return render(request,"myapp/registrations.html")
 
 def multi(request):
@@ -71,3 +71,16 @@ def img_display(request):
         file_url=fs.url(file)
                 
     return render(request,"img_display.html",context={'file_url':file_url})
+
+def imgs_upld(request):
+    return render(request,"imgs_upld.html")
+
+from myapp.utilities import store_image
+def imgs_display(request):
+    file_url=False
+    if request.method=="POST" and request.FILES:
+        image1=request.FILES.get('sam1')
+        image2=request.FILES.get('sam2')
+        file_urls=map(store_image,[image1,image2])        
+                
+    return render(request,"imgs_display.html",context={'file_urls':file_urls})

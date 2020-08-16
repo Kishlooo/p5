@@ -12,4 +12,6 @@ urlpatterns = [
     path('multi/',views.multi,name="multiselect"),
     path('img/',views.img_upld,name="img"),
     path('img_dipslay/',views.img_display,name="img_disp"),
+    path('imgs/',views.imgs_upld,name="imgs"),
+    path('imgs_diplay/',views.imgs_display,name="imgs_disp"),
 ]
