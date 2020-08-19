@@ -14,4 +14,5 @@ urlpatterns = [
     path('img_dipslay/',views.img_display,name="img_disp"),
     path('imgs/',views.imgs_upld,name="imgs"),
     path('imgs_diplay/',views.imgs_display,name="imgs_disp"),
+    path('builtin/',views.builtin,name="builtin"),
 ]
