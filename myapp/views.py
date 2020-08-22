@@ -76,6 +76,7 @@ def imgs_upld(request):
     return render(request,"imgs_upld.html")
 
 from myapp.utilities import store_image
+
 def imgs_display(request):
     file_url=False
     if request.method=="POST" and request.FILES:
@@ -89,25 +90,25 @@ from myapp import forms
 
 def builtinforms(request):
     if request.method=="POST":
-        form=forms.SampleForm(request.POST,request.FILES)#im creating a form instance with the data filled the all the firlds will get th
-        #the specified value
+        form=forms.SampleForm(request.POST,request.FILES)
         if form.is_valid():
-            #cleaned_data is varible in form instance that holds the dictonary containing the data that we 
-            #have filled
-            first_name=form.cleaned_data.get('first_name')
-            last_name=form.cleaned_data.get('last_name')
-            email=form.cleaned_data.get('email')
-            phno=form.cleaned_data.get('phno')
-            pwd=form.cleaned_data.get('pwd')
+            First_Name=form.cleaned_data.get('First_Name')
+            Last_Name=form.cleaned_data.get('Last_Name')
+            Email=form.cleaned_data.get('Email')
+            PhoneNumber=form.cleaned_data.get('PhoneNumber')
+            Password=form.cleaned_data.get('Password')
             birth_day=form.cleaned_data.get('birth_day')
             birth_month=form.cleaned_data.get('birth_month')
             birth_year=form.cleaned_data.get('birth_year')
-            gender=form.cleaned_data.get('gender')
-            
+            Gender=form.cleaned_data.get('Gender')
+            Prog_Languages=form.cleaned_data.get('Prog_Languages')
+            Languages=form.cleaned_data.get('Languages')
+            Image=form.cleaned_data.get('Image')
+            store_image(Image)
             data=form.cleaned_data
             return render(request,"display_data.html",context=data)
     form=forms.SampleForm()
-    return render(request,'builtin.html',{'form':form})
+    return render(request,"builtin.html",{'form':form})
     
     #forms is a file or a library
     #in forms is a class so we inherit from forms.Form
